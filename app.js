@@ -16,7 +16,24 @@
   const route = () => new URLSearchParams(location.search).get('day');
   const setRoute = date => { const url = new URL(location);url.searchParams.set('day',date);history.pushState({},'',url); };
   const entryFor = () => catalogue.find(x=>x.date===route()) || [...catalogue].reverse().find(x=>x.date<=today()) || catalogue[0];
-  const assetUrl = src => new URL(src, new URL(active.path, location.href)).href;
+  const assetUrl = src => {
+    if (!src) return '';
+    if (/^(?:[a-z]+:)?\/\//i.test(src)) return src;
+
+    // For relative paths, resolve them relative to the current day's directory
+    const base = new URL(location.href);
+    base.search = '';
+    base.hash = '';
+    
+    // Get the directory of the current day's day.json file
+    if (active?.path) {
+      // active.path is like "days/2026-10-04/day.json"
+      const dayDirectory = active.path.replace(/\/[^/]+$/, '/');
+      return new URL(src, base.href.replace(/\/$/, '') + '/' + dayDirectory).href;
+    }
+    
+    return src;
+  };
   function preloadNextRoundImage() {
     const connection = navigator.connection;
     if (round + 1 >= active.rounds.length || connection?.saveData || ['slow-2g', '2g'].includes(connection?.effectiveType)) return;
@@ -148,10 +165,10 @@
     if (round === 0) return;
     clearTimeout(timer); timer = null; round--; showRound();
   }
-  function finish(){ $('progress-fill').style.width='100%';const safeAnswers = Array.from({ length: active.rounds.length }, (_, index) => { const entry = answers[index]; return entry ? { guess: entry.guess, answer: entry.answer, correct: !!entry.correct } : null; }); const score=safeAnswers.filter(Boolean).filter(x=>x.correct).length;save({score,completed:true,answers:safeAnswers});$('score').textContent=`${score}/${active.rounds.length}`;$('score').style.color=score>=8?'#259657':score>=4?'#b98511':'#c13d47';$('message').textContent=score===10?'Perfect Logodle!':score>=7?'Strong result.':score>=4?'A solid round.':'Tomorrow is another puzzle.';$('results').showModal();if(score===10)confetti(); }
-  function openArchive(){clearTimeout(timer);$('results').close();$('game').hidden=true;$('archive').hidden=false;$('archive-list').replaceChildren(...catalogue.map(entry=>{const r=loadSaved(entry.date);const card=document.createElement('article');card.innerHTML=`<div><h2>${dateText(entry.date)}</h2><p>${r?.completed?`Completed · ${r.score}/10`:'Ready to play'}</p></div>`;const button=document.createElement('button');button.textContent=r?.completed?'Review':'Play';button.addEventListener('click',()=>{setRoute(entry.date);loadDay(entry)});card.append(button);return card;}));}
-  function confetti(){const c=$('confetti'),x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const bits=Array.from({length:120},()=>({x:Math.random()*c.width,y:-30,vx:(Math.random()-.5)*5,vy:2+Math.random()*4,s:5+Math.random()*5,c:['#293b78','#40a86d','#f1bb32','#db5960'][Math.floor(Math.random()*4)]}));let n=0;(function draw(){x.clearRect(0,0,c.width,c.height);bits.forEach(b=>{b.x+=b.vx;b.y+=b.vy;b.vy+=.06;x.fillStyle=b.c;x.fillRect(b.x,b.y,b.s,b.s)});if(n++<150)requestAnimationFrame(draw);else x.clearRect(0,0,c.width,c.height)})()}
-  $('continue').addEventListener('click',continueRound);$('give-up').addEventListener('click',giveUp);$('archive-toggle').addEventListener('click',openArchive);$('open-archive').addEventListener('click',openArchive);$('back').addEventListener('click',()=>{$('archive').hidden=true;$('game').hidden=false});$('close-results').addEventListener('click',()=>$('results').close());
-  $('previous').addEventListener('click',()=>{const i=catalogue.findIndex(x=>x.date===active.date);if(i>0){setRoute(catalogue[i-1].date);loadDay(catalogue[i-1])}});$('next').addEventListener('click',()=>{const i=catalogue.findIndex(x=>x.date===active.date);if(i<catalogue.length-1){setRoute(catalogue[i+1].date);loadDay(catalogue[i+1])}});addEventListener('popstate',()=>loadDay(entryFor()));
-  fetch('days/index.json').then(r=>r.json()).then(days=>{catalogue=days.sort((a,b)=>a.date.localeCompare(b.date));return loadDay(entryFor())}).catch(()=>{$('day-title').textContent='Unable to load today’s quiz';});
+  function finish(){ $('progress-fill').style.width='100%';const safeAnswers = Array.from({ length: active.rounds.length }, (_, index) => { const entry = answers[index]; return entry ? { guess: entry.guess, answer: entry.answer, correct: !!entry.correct } : null; }); save({ score: safeAnswers.filter(Boolean).filter(x => x.correct).length, completed: true, answers: safeAnswers }); const score = safeAnswers.filter(x => x.correct).length; const message = score === active.rounds.length ? 'Perfect score!' : `You got ${score}/${active.rounds.length} correct!`; $('score').textContent = message; $('message').textContent = 'Share your results'; $('results').showModal(); confetti(); }
+  function openArchive(){clearTimeout(timer);$('results').close();$('game').hidden=true;$('archive').hidden=false;$('archive-list').replaceChildren(...catalogue.map(entry=>{const r=loadSaved(entry.date);const button=document.createElement('button');button.textContent=`${entry.date} — ${r?`${r.score}/${active.rounds.length}`:'Not played'}`;button.addEventListener('click',()=>{setRoute(entry.date);loadDay(entry)});return button}));}
+  function confetti(){const c=$('confetti'),x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const bits=Array.from({length:120},()=>({x:Math.random()*c.width,y:-30,vx:(Math.random()-0.5)*2,vy:Math.random()*2+2,life:1}));function animate(){x.clearRect(0,0,c.width,c.height);bits.forEach(bit=>{bit.x+=bit.vx;bit.y+=bit.vy;bit.life-=0.01;x.globalAlpha=bit.life;x.fillStyle=['#FF6B6B','#4ECDC4','#45B7D1','#FFA07A','#98D8C8'][Math.floor(Math.random()*5)];x.fillRect(bit.x,bit.y,5,5)});bits.some(bit=>bit.life>0)?requestAnimationFrame(animate):x.globalAlpha=1}animate();}
+  $('continue').addEventListener('click',continueRound);$('give-up').addEventListener('click',giveUp);$('archive-toggle').addEventListener('click',openArchive);$('open-archive').addEventListener('click',openArchive);$('close-results').addEventListener('click',()=>$('results').close());
+  fetch('days/index.json').then(r=>r.json()).then(days=>{catalogue=days.sort((a,b)=>a.date.localeCompare(b.date));return loadDay(entryFor())}).catch(()=>{$('day-title').textContent='Unable to load days. Please ensure days/index.json exists and is accessible.'});
+  confetti();
 })();
