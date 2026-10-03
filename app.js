@@ -20,18 +20,19 @@
     if (!src) return '';
     if (/^(?:[a-z]+:)?\/\//i.test(src)) return src;
 
+    // For relative paths, resolve them relative to the current day's directory
     const base = new URL(location.href);
     base.search = '';
     base.hash = '';
-
+    
+    // Get the directory of the current day's day.json file
     if (active?.path) {
-      const directory = active.path.replace(/[^/]+$/, '');
-      base.pathname = directory || '/';
-    } else {
-      base.pathname = base.pathname.replace(/[^/]*$/, '');
+      // active.path is like "days/2026-10-04/day.json"
+      const dayDirectory = active.path.replace(/\/[^/]+$/, '/');
+      return new URL(src, base.href.replace(/\/$/, '') + '/' + dayDirectory).href;
     }
-
-    return new URL(src, base).href;
+    
+    return src;
   };
   function preloadNextRoundImage() {
     const connection = navigator.connection;
@@ -164,10 +165,10 @@
     if (round === 0) return;
     clearTimeout(timer); timer = null; round--; showRound();
   }
-  function finish(){ $('progress-fill').style.width='100%';const safeAnswers = Array.from({ length: active.rounds.length }, (_, index) => { const entry = answers[index]; return entry ? { guess: entry.guess, answer: entry.answer, correct: !!entry.correct } : null; }); const score = safeAnswers.filter(Boolean).filter(x => x.correct).length; const total = active.rounds.length; const seal = document.createElement('span'); seal.textContent = `${score}/${total}`; $('score').textContent = seal.textContent; const message = score === total ? 'Perfect round.' : score >= total * .7 ? 'Strong work.' : score >= total * .4 ? 'Nice effort.' : 'A few to go.'; $('message').textContent = message; $('results').showModal(); }
-  function openArchive(){clearTimeout(timer);$('results').close();$('game').hidden=true;$('archive').hidden=false;$('archive-list').replaceChildren(...catalogue.map(entry=>{const r=loadSaved(entry.date);const item=document.createElement('button');item.className='archive-item';item.innerHTML=`<strong>${entry.date}</strong><span>${r?.completed ? 'Completed' : 'Open'}</span>`;item.addEventListener('click',()=>{setRoute(entry.date);loadDay(entry)});return item})); }
-  function confetti(){const c=$('confetti'),x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const bits=Array.from({length:120},()=>({x:Math.random()*c.width,y:-30,vx:(Math.random()-0.5)*5,vy:Math.random()*3+2,life:Math.random()*100+40,color:`hsl(${Math.random()*360},90%,60%)`}));const render=()=>{x.clearRect(0,0,c.width,c.height);bits.forEach(bit=>{bit.x+=bit.vx;bit.y+=bit.vy;bit.vy+=0.05;x.fillStyle=bit.color;x.fillRect(bit.x,bit.y,6,6);});requestAnimationFrame(render)};requestAnimationFrame(render)}
-  $('continue').addEventListener('click',continueRound);$('give-up').addEventListener('click',giveUp);$('archive-toggle').addEventListener('click',openArchive);$('open-archive').addEventListener('click',openArchive);$('close-results').addEventListener('click',()=>$('results').close());$('previous').addEventListener('click',()=>{const i=catalogue.findIndex(x=>x.date===active.date);if(i>0){setRoute(catalogue[i-1].date);loadDay(catalogue[i-1])}});$('next').addEventListener('click',()=>{const i=catalogue.findIndex(x=>x.date===active.date);if(i>=0&&i<catalogue.length-1){setRoute(catalogue[i+1].date);loadDay(catalogue[i+1])}});$('back').addEventListener('click',()=>{const current=entryFor();$('archive').hidden=true;$('game').hidden=false;loadDay(current)});
-  fetch('days/index.json').then(r=>r.json()).then(days=>{catalogue=days.sort((a,b)=>a.date.localeCompare(b.date));return loadDay(entryFor())}).catch(()=>{$('day-title').textContent='Unable to load daily content.';});
+  function finish(){ $('progress-fill').style.width='100%';const safeAnswers = Array.from({ length: active.rounds.length }, (_, index) => { const entry = answers[index]; return entry ? { guess: entry.guess, answer: entry.answer, correct: !!entry.correct } : null; }); save({ score: safeAnswers.filter(Boolean).filter(x => x.correct).length, completed: true, answers: safeAnswers }); const score = safeAnswers.filter(x => x.correct).length; const message = score === active.rounds.length ? 'Perfect score!' : `You got ${score}/${active.rounds.length} correct!`; $('score').textContent = message; $('message').textContent = 'Share your results'; $('results').showModal(); confetti(); }
+  function openArchive(){clearTimeout(timer);$('results').close();$('game').hidden=true;$('archive').hidden=false;$('archive-list').replaceChildren(...catalogue.map(entry=>{const r=loadSaved(entry.date);const button=document.createElement('button');button.textContent=`${entry.date} — ${r?`${r.score}/${active.rounds.length}`:'Not played'}`;button.addEventListener('click',()=>{setRoute(entry.date);loadDay(entry)});return button}));}
+  function confetti(){const c=$('confetti'),x=c.getContext('2d');c.width=innerWidth;c.height=innerHeight;const bits=Array.from({length:120},()=>({x:Math.random()*c.width,y:-30,vx:(Math.random()-0.5)*2,vy:Math.random()*2+2,life:1}));function animate(){x.clearRect(0,0,c.width,c.height);bits.forEach(bit=>{bit.x+=bit.vx;bit.y+=bit.vy;bit.life-=0.01;x.globalAlpha=bit.life;x.fillStyle=['#FF6B6B','#4ECDC4','#45B7D1','#FFA07A','#98D8C8'][Math.floor(Math.random()*5)];x.fillRect(bit.x,bit.y,5,5)});bits.some(bit=>bit.life>0)?requestAnimationFrame(animate):x.globalAlpha=1}animate();}
+  $('continue').addEventListener('click',continueRound);$('give-up').addEventListener('click',giveUp);$('archive-toggle').addEventListener('click',openArchive);$('open-archive').addEventListener('click',openArchive);$('close-results').addEventListener('click',()=>$('results').close());
+  fetch('days/index.json').then(r=>r.json()).then(days=>{catalogue=days.sort((a,b)=>a.date.localeCompare(b.date));return loadDay(entryFor())}).catch(()=>{$('day-title').textContent='Unable to load days. Please ensure days/index.json exists and is accessible.'});
   confetti();
 })();
