@@ -1,6 +1,6 @@
 (() => {
   const $ = id => document.getElementById(id);
-  let catalogue = [], active, round = 0, answers = [], answered = false, timer = null;
+  let catalogue = [], active, round = 0, answers = [], answered = false, timer = null, prefetchedImage = null;
   const resultKey = date => `logodle:${date}`;
   const today = () => new Date().toLocaleDateString('en-CA');
   const dateText = date => new Intl.DateTimeFormat(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric'}).format(new Date(`${date}T12:00:00`));
@@ -17,6 +17,17 @@
   const setRoute = date => { const url = new URL(location);url.searchParams.set('day',date);history.pushState({},'',url); };
   const entryFor = () => catalogue.find(x=>x.date===route()) || [...catalogue].reverse().find(x=>x.date<=today()) || catalogue[0];
   const assetUrl = src => new URL(src, new URL(active.path, location.href)).href;
+  function preloadNextRoundImage() {
+    const connection = navigator.connection;
+    if (round + 1 >= active.rounds.length || connection?.saveData || ['slow-2g', '2g'].includes(connection?.effectiveType)) return;
+    const src = assetUrl(active.rounds[round + 1].image);
+    if (prefetchedImage?.src === src) return;
+    const image = new Image();
+    image.decoding = 'async';
+    image.fetchPriority = 'low';
+    image.src = src;
+    prefetchedImage = image;
+  }
   const isCompletedDay = () => !!loadSaved(active?.date)?.completed;
   function renderRoundControls() {
     const completed = isCompletedDay();
@@ -78,7 +89,11 @@
     answered = !!record || completed;
     $('round-label').textContent = `Round ${round + 1} of ${active.rounds.length}`;
     $('progress-fill').style.width = `${round / active.rounds.length * 100}%`;
-    $('logo').src = assetUrl(item.image); $('logo').alt = 'Mystery logo';
+    const logo = $('logo');
+    logo.decoding = 'async';
+    logo.fetchPriority = 'high';
+    logo.addEventListener('load', preloadNextRoundImage, { once: true });
+    logo.src = assetUrl(item.image); logo.alt = 'Mystery logo';
     $('feedback').textContent = ''; $('feedback').className = 'feedback';
     renderRoundControls();
     const shuffled = [...item.options].sort(()=>Math.random()-.5);
