@@ -1,13 +1,12 @@
-# Logodle
+# Logodle — static Cloudflare Pages project
 
-A dependency-free static daily logo guessing game. Open `index.html` through a static server (for example, `python -m http.server 8080`) and visit the supplied local address.
+This is a dependency-free website ready for a GitHub repository and Cloudflare Pages. Set the build command to **none** and the output directory to the repository root.
 
-## Content
+## Add a day
 
-Daily quizzes live in `data.js`. Add a date, label, and five `rounds`; every round has an `answer`, a `logo` image path, and eight `options`. The app uses `?day=YYYY-MM-DD` for shareable/archive URLs and opens the newest available quiz dated today or earlier by default. It persistently records results in browser `localStorage` under `logodle:result:<date>`.
+1. Copy `days/2026-10-04` to a new `days/YYYY-MM-DD` folder.
+2. Add that day's ten logo files to its `assets/` folder.
+3. Edit the copied `day.json`: set the date and title, then add ten rounds with exactly eight options each.
+4. Register the new day in `days/index.json`.
 
-The five original Day 1 rounds use the supplied PNG/JPG/WebP logo files in `assets/`; the additional archive rounds use image-only SVG marks. When a future image is not yet supplied, the game displays a neutral mark without text, so it never gives away the answer.
-
-## Answer feedback
-
-After an answer, the selected option gives immediate visual feedback: correct choices pulse green, while incorrect choices shake red and reveal the green answer. The game automatically advances after two seconds (or shows results after the final round); the Next button remains available for players who want to continue immediately.
+Each day is self-contained: its quiz data and logo assets travel together. The root app loads the selected day via `?day=YYYY-MM-DD`; it opens the newest available day on or before the visitor's local date by default.

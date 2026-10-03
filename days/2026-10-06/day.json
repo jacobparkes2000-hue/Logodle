@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-06",
+  "title": "III",
+  "rounds": [
+    {
+      "answer": "Hermès",
+      "image": "assets/Hermes.png",
+      "options": ["Hermès", "Gucci", "Loewe", "Bottega Veneta", "Burberry", "Coach", "Cartier", "Louis Vuitton"]
+    },
+    {
+      "answer": "Houston Rockets",
+      "image": "assets/Houston Rockets.webp",
+      "options": ["Houston Rockets", "Red Bull", "Rolls-Royce", "Rolex", "Ralph Lauren", "Ryanair", "Reddit", "Razer"]
+    },
+    {
+  "answer": "IKEA",
+  "image": "assets/Ikea-logo.jpg",
+  "options": ["IKEA", "Muji", "Wayfair", "Kmart", "Habitat", "West Elm", "Target", "JYSK"]
+},
+    {
+      "answer": "Intel",
+      "image": "assets/Intel.png",
+      "options": ["Intel", "AMD", "ARM", "Qualcomm", "Nvidia", "MediaTek", "Broadcom", "TSMC"]
+    },
+    {
+      "answer": "Kellogg's",
+      "image": "assets/Kellogg-Symbol.png",
+      "options": ["Kellogg's", "Kmart", "KFC", "Kodak", "Kia", "Kawasaki", "Kenwood", "Krispy Kreme"]
+    },
+    {
+      "answer": "LEGO",
+      "image": "assets/Lego.jpg",
+      "options": ["LEGO", "Mattel", "Hasbro", "Playmobil", "Meccano", "Bandai", "Ravensburger", "Fisher-Price"]
+    },
+    {
+      "answer": "Li-Ning",
+      "image": "assets/Li-ning.png",
+      "options": ["Li-Ning", "A.S.O", "Puma", "Bai-du", "Mizuno", "Anta", "D+AF", "Yonex"]
+    },
+    {
+      "answer": "McDonald's",
+      "image": "assets/McDonalds.webp",
+      "options": ["McDonald's", "Microsoft", "Mastercard", "Mazda", "Mitsubishi", "Meta", "Motorola", "McLaren"]
+    },
+    {
+      "answer": "Minnesota Timberwolves",
+      "image": "assets/Minnesota Timberwolves.png",
+      "options": ["Minnesota Timberwolves", "Memphis Timberwolves", "Utah Wolves", "Dallas Coyotes", "Denver Hounds", "Oklahoma Grey Wolves", "Orlando Huskies", "Charlotte Direwolves"]
+    },
+    {
+      "answer": "Mozilla",
+      "image": "assets/Mozilla.jpg",
+      "options": ["Mozilla", "Firefox", "Brave", "Opera", "Vivaldi", "Google Chrome", "Safari", "Microsoft Edge"]
+    }
+  ]
+}

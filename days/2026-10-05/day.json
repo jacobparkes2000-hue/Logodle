@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-05",
+  "title": "II",
+  "rounds": [
+    {
+      "answer": "Dairy Queen",
+      "image": "assets/DairyQueen.webp",
+      "options": ["Dairy Queen", "DQ Energy", "D&Q Foods", "D-Q Mobile", "Dairyland", "Dairy Farmers", "Dairy Hut", "Dairy Dream"]
+    },
+    {
+      "answer": "Dallas Cowboys",
+      "image": "assets/Dallas_Cowboys.webp",
+      "options": ["Dallas Cowboys", "North Queensland Cowboys", "Cowboys FC", "Houston Texans", "Minnesota Vikings", "Tennessee Titans", "Dallas Stars", "New England Patriots"]
+    },
+    {
+      "answer": "DeepCool",
+      "image": "assets/Deepcool.webp",
+      "options": ["DeepCool", "DeepMind", "BlockLabs", "DataBricks", "CoreWeave", "Cohere", "Mistral", "Lambda Labs"]
+    },
+    {
+      "answer": "Deloitte",
+      "image": "assets/Deloitte.png",
+      "options": ["Deloitte", "DLA Piper", "Dentons", "Davis Polk", "DFD", "DPMG", "Dan Thornton", "BD-UO"]
+    },
+    {
+      "answer": "EY",
+      "image": "assets/EY Logo.png",
+      "options": ["EY", "KPMG", "PwC", "BDO", "RSM", "Grant Thornton", "Forvis Mazars", "Bain & Company"]
+    },
+    {
+      "answer": "Falkland Islands",
+      "image": "assets/Falklands.svg",
+      "options": ["Falkland Islands", "South Georgia", "St Helena", "Ascension Island", "Tristan da Cunha", "Bermuda", "Cayman Islands", "Pitcairn Islands"]
+    },
+    {
+      "answer": "Faroe Islands",
+      "image": "assets/Faroe Islands.svg",
+      "options": ["Faroe Islands", "Shetland Islands", "Orkney Islands", "Isle of Man", "Tasmania", "Wales", "Gisborne District", "Goat Island"]
+    },
+    {
+      "answer": "Ferrari",
+      "image": "assets/Ferrari.svg",
+      "options": ["Ferrari", "Porsche", "Lamborghini", "Maserati", "Alfa Romeo", "Pagani", "Aston Martin", "McLaren"]
+    },
+    {
+      "answer": "Gemini",
+      "image": "assets/Gemini.webp",
+      "options": ["Gemini", "Claude", "Kimi", "Perplexity", "ChatGPT", "Mistral", "Cohere", "DeepSeek"]
+    },
+    {
+      "answer": "Studio Ghibli",
+      "image": "assets/Ghibli.jpg",
+      "options": ["Studio Ghibli", "Toei Animation", "Kyoto Animation", "Madhouse", "MAPPA", "Sunrise", "Bones", "Production I.G."]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "date": "2026-10-09",
+  "title": "VI",
+  "rounds": [
+    {
+      "answer": "Stephen Curry",
+      "image": "assets/Steph Curry.jpg",
+      "options": ["Stephen Curry", "Damian Lillard", "Klay Thompson", "Trae Young", "Kyrie Irving", "Ja Morant", "Luka Dončić", "Devin Booker"]
+    },
+    {
+      "answer": "Telstra",
+      "image": "assets/Telstra Logo.png",
+      "options": ["Telstra", "Optus", "Vodafone", "TPG", "Aussie Broadband", "NBN Co", "Spark", "Vocus"]
+    },
+    {
+      "answer": "UK Government",
+      "image": "assets/UK Government.gif",
+      "options": ["UK Government", "Government of Canada", "Australian Government", "European Commission", "US Government", "New Zealand Government", "UK Parliament", "British Council"]
+    },
+    {
+      "answer": "United Nations",
+      "image": "assets/UN.webp",
+      "options": ["United Nations", "UNICEF", "World Health Organization", "World Bank", "Red Cross", "Amnesty International", "Greenpeace", "WWF"]
+    },
+    {
+      "answer": "Xiaomi",
+      "image": "assets/Xiaomi_logo_(2021-).svg",
+      "options": ["Xiaomi", "Oppo", "OnePlus", "Huawei", "Realme", "Vivo", "Samsung", "Honor"]
+    },
+    {
+      "answer": "Airbus",
+      "image": "assets/Airbus.jpg",
+      "options": ["Airbus", "Boeing", "Embraer", "Bombardier", "Dassault Aviation", "Lockheed Martin", "Saab", "ATR"]
+    },
+    {
+      "answer": "Airbnb",
+      "image": "assets/Airbnb-Emblem.png",
+      "options": ["Airbnb", "Vrbo", "Booking.com", "Expedia", "Agoda", "Hotels.com", "Hostelworld", "Tripadvisor"]
+    },
+    {
+      "answer": "Ferrari",
+      "image": "assets/Ferrari.svg",
+      "options": ["Ferrari", "Mustang", "Porsche", "Lamborghini", "Maserati", "Alfa Romeo", "Pagani", "Aston Martin"]
+    },
+    {
+      "answer": "Panda Express",
+      "image": "assets/Panda Express.png",
+      "options": ["Panda Express", "WWF", "Panda Security", "PandaDoc", "Panda Inn", "Panda Restaurant Group", "Kung Fu Panda", "Panda Tea"]
+    },
+    {
+      "answer": "Opel",
+      "image": "assets/Opel-Logo_2017.svg.webp",
+      "options": ["Opel", "Mustang", "Ferrari", "Bronco", "Dodge", "Chevrolet", "Lotus", "Lamborghini"]
+    }
+  ]
+}

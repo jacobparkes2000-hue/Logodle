@@ -1,0 +1,16 @@
+{
+  "date":"2026-10-04",
+  "title":"Launch Day",
+  "rounds":[
+    {"answer":"A2 Milk","image":"assets/A2milk.png","options":["A2 Milk","Alpha-2","Alpha Tier","A-20 ASX","A2 Private","A2 Wireless","Bai A2","A2B"]},
+    {"answer":"Alamo Drafthouse","image":"assets/Alamo Drafthouse.png","options":["Alamo Drafthouse","Aardvark Studios","Apex Amusements","Atlas Cinemas","Avalon Pictures","Acorn Theater","Axiom Entertainment","Allegro Films"]},
+    {"answer":"Atari","image":"assets/Atari.jpg","options":["Atari","Aniplex","Arc System Works","Atlus","Aksys Games","Acquire","Agetec","Akatsuki Games"]},
+    {"answer":"Baidu","image":"assets/Baidu.png","options":["Baidu","Douyin","Didi","Du Xiaoman","Dunhuang Network","Tencent","Kuaishou","Bilibili"]},
+    {"answer":"BNP Paribas","image":"assets/bnp-paribas.png","options":["BNP Paribas","Goldman Sachs","Morgan Stanley","UBS","Barclays","Starling Bank","Northern Star Resources","Deutsche Bank"]},
+    {"answer":"Commonwealth Bank","image":"assets/CBA.jpg","options":["Commonwealth Bank","Westpac","NAB","ANZ","Macquarie","Northern Star","Evolution Mining","Newcrest"]},
+    {"answer":"Chevron","image":"assets/Chevron.png","options":["Chevron","Caltex","Texaco","Shell","BP","ExxonMobil","Santos","Woodside"]},
+    {"answer":"Cisco","image":"assets/Cisco.svg","options":["Cisco","Zoom","Juniper Networks","Netgear","Ubiquiti","Cloudflare","Arista Networks","Linksys"]},
+    {"answer":"Claude","image":"assets/Claude.webp","options":["Claude","Gemini","Kimi","Perplexity","Mistral","Cohere","ChatGPT","DeepSeek"]},
+    {"answer":"Corsair","image":"assets/Corsair.svg","options":["Corsair","The Pirate Bay","Sea of Thieves","Assassin's Creed IV: Black Flag","Pirates of the Caribbean","Skull and Bones","Razer","Logitech G"]}
+  ]
+}
