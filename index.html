@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f4f6" />
+    <title>Logodle — Daily logo quiz</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="confetti" aria-hidden="true"></canvas>
+    <header class="site-header">
+      <button id="archive-button" class="icon-button" aria-label="Open archive" title="Archive">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16v12H4zM3 4h18v4H3zM9 12h6" /></svg>
+      </button>
+      <a class="wordmark" href="./" aria-label="Logodle home">LOGODLE</a>
+      <button id="stats-button" class="icon-button" aria-label="View statistics" title="Statistics">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10m6 10V4m6 16v-7" /></svg>
+      </button>
+    </header>
+
+    <main class="game-shell">
+      <section id="game-view" aria-live="polite">
+        <div class="day-nav">
+          <button id="previous-day" class="arrow-button" aria-label="Previous available day">‹</button>
+          <div><p class="eyebrow">DAILY LOGO QUIZ</p><h1 id="day-title">Loading…</h1></div>
+          <button id="next-day" class="arrow-button" aria-label="Next available day">›</button>
+        </div>
+        <div class="progress-row"><span id="round-label">Round 1 of 5</span><div class="progress-track"><i id="progress-bar"></i></div></div>
+        <section class="logo-card" aria-label="Guess this logo">
+          <img id="logo-image" src="" alt="Mystery company logo" />
+        </section>
+        <p id="prompt" class="prompt">Which logo is this?</p>
+        <div id="options" class="options" aria-label="Answer choices"></div>
+        <div id="feedback" class="feedback" role="status"></div>
+        <div class="actions">
+          <button id="give-up" class="button secondary">Give up</button>
+          <button id="next-round" class="button primary" disabled>Next round <span aria-hidden="true">›</span></button>
+        </div>
+      </section>
+
+      <section id="archive-view" class="hidden" aria-labelledby="archive-title">
+        <div class="archive-heading"><div><p class="eyebrow">PLAY A PREVIOUS QUIZ</p><h1 id="archive-title">Archive</h1></div><button id="close-archive" class="text-button">Back to game</button></div>
+        <div id="archive-grid" class="archive-grid"></div>
+      </section>
+    </main>
+
+    <dialog id="results-modal" class="modal">
+      <button id="close-results" class="modal-close" aria-label="Close results">×</button>
+      <p class="eyebrow">QUIZ COMPLETE</p><h2>Nice work!</h2><p id="score-display" class="score">0/5</p><p id="score-message" class="score-message"></p>
+      <div id="answer-recap" class="recap"></div>
+      <button id="random-day" class="button primary wide">Play a random past day</button>
+      <button id="results-archive" class="button secondary wide">Browse archive</button>
+    </dialog>
+
+    <dialog id="stats-modal" class="modal small">
+      <button id="close-stats" class="modal-close" aria-label="Close statistics">×</button>
+      <p class="eyebrow">YOUR LOGODLE</p><h2>Statistics</h2><div id="stats-content" class="stats"></div>
+    </dialog>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
