@@ -2,10 +2,10 @@
 {"answer":"PwC","image":"assets/PWC.png","options":["PwC","KPMG","Deloitte","EY","BDO","RSM","Grant Thornton","Forvis Mazars"]},
 {"answer":"Qantas","image":"assets/Qantas.jpg","options":["Qantas","Virgin Australia","Air NSW","Jetstar","Jumping Jacks","Emirates","Kangaroo Air","Jumpies"]},
 {"answer":"Qatar Airways","image":"assets/Qatar airways.png","options":["Qatar Airways","Qantas","Emirates","Etihad","Turkish Airlines","Singapore Airlines","Oman Air","Gulf Air"]},
-{"answer":"Razer","image":"assets/Razer.svg","options":["Razer","Alien","SteelSeries","Logitech G","HyperX","Alienware","ROCCAT","MSI"]},
-{"answer":"Boston Red Sox","image":"assets/Red Sox.webp","options":["Boston Red Sox","Chicago White Sox","Cincinnati Reds","St. Louis Cardinals","Cleveland Guardians","Minnesota Twins","Philadelphia Phillies","Washington Nationals"]},
+{"answer":"Razer","image":"assets/Razer.svg","options":["Razer","Alien: Earth","SteelSeries","Logitech G","HyperX","Alienware","ROCCAT","MSI"]},
+{"answer":"Boston Red Sox","image":"assets/Red Sox.webp","options":["Boston Red Sox","Boston White Sox","Boston Beer Company","Boston Braves","Baltimore Reds","Birmingham Reds","Buffalo Bills","Bakersfield Nationals"]},
 {"answer":"Samsung","image":"assets/Samsung Logo.png","options":["Samsung","Bloomberg","Sony","LG","Huawei","OnePlus","Oppo","Panasonic"]},
-{"answer":"Shopify","image":"assets/Shopify.png","options":["Shopify","Squarespace","S3pta","BigCommerce","Etsy","SooCommerce","Square","Sacramento Shopper"]},
+{"answer":"Shopify","image":"assets/Shopify.png","options":["Shopify","Squarespace","S3pta","Shop-Commerce","Sketcher","SooCommerce","Square","Sacramento Shopper"]},
 {"answer":"Slack","image":"assets/Slack.jpg","options":["Slack","Microsoft Teams","Discord","Google Chat","Mattermost","Zoom","Notion","Asana"]},
 {"answer":"Square","image":"assets/Square.jpg","options":["Square","Stripe","PayPal","Wise","Afterpay","Block","Adyen","Klarna"]},
 {"answer":"Steam","image":"assets/Steam.webp","options":["Steam","DOT Gears","GOG","Ubisoft Connect","Gears Mining","Battle.net","Rigear","Gearco"]}

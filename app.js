@@ -20,16 +20,10 @@
     if (!src) return '';
     if (/^(?:[a-z]+:)?\/\//i.test(src)) return src;
 
-    // For relative paths, resolve them relative to the current day's directory
-    const base = new URL(location.href);
-    base.search = '';
-    base.hash = '';
-    
-    // Get the directory of the current day's day.json file
+    // Resolve relative paths from the app directory and the current day's folder.
     if (active?.path) {
-      // active.path is like "days/2026-10-04/day.json"
       const dayDirectory = active.path.replace(/\/[^/]+$/, '/');
-      return new URL(src, base.href.replace(/\/$/, '') + '/' + dayDirectory).href;
+      return new URL(`${dayDirectory}${src}`, new URL('.', location.href)).href;
     }
     
     return src;

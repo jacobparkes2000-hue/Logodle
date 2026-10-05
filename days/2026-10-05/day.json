@@ -5,12 +5,12 @@
     {
       "answer": "Dairy Queen",
       "image": "assets/DairyQueen.webp",
-      "options": ["Dairy Queen", "DQ Energy", "D&Q Foods", "D-Q Mobile", "Dairyland", "Dairy Farmers", "Dairy Hut", "Dairy Dream"]
+      "options": ["Dairy Queen", "DQ Energy", "D&Q Foods", "D-Q Mobile", "DQ Solutions", "Destination Quality", "Dairy Qaunt", "Daqo"]
     },
     {
       "answer": "Dallas Cowboys",
       "image": "assets/Dallas_Cowboys.webp",
-      "options": ["Dallas Cowboys", "North Queensland Cowboys", "Cowboys FC", "Houston Texans", "Minnesota Vikings", "Tennessee Titans", "Dallas Stars", "New England Patriots"]
+      "options": ["Dallas Cowboys", "North Queensland Cowboys", "Lone Rangers", "Houston Texans", "Minnesota Vikings", "Tennessee Titans", "Dallas Stars", "New England Patriots"]
     },
     {
       "answer": "DeepCool",
@@ -20,7 +20,7 @@
     {
       "answer": "Deloitte",
       "image": "assets/Deloitte.png",
-      "options": ["Deloitte", "DLA Piper", "Dentons", "Davis Polk", "DFD", "DPMG", "Dan Thornton", "BD-UO"]
+      "options": ["Deloitte", "DLA Piper", "Dentons", "Davis Polk", "DFD", "DPMG", "Dan Thornton", "DUO Labs"]
     },
     {
       "answer": "EY",
@@ -35,7 +35,7 @@
     {
       "answer": "Faroe Islands",
       "image": "assets/Faroe Islands.svg",
-      "options": ["Faroe Islands", "Shetland Islands", "Orkney Islands", "Isle of Man", "Tasmania", "Wales", "Gisborne District", "Goat Island"]
+      "options": ["Faroe Islands", "Shetland Islands", "Orkney Islands", "Isle of Man", "Sorrell Council", "Denbighshire", "Gisborne District", "Goat Island"]
     },
     {
       "answer": "Ferrari",
