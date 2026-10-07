@@ -1,20 +1,18 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="keywords" content="Daily, Logos, Quiz, Game, Guess, Brand, Challenge, Free">
-    <meta name="author" content="Jacob Parkes">
-    <meta name="description" content="Daily logo guesser game. Identify ten mystery brand logos from eight choices, track your score, and revisit past challenges in the archive." />
-    <meta name="theme-color" content="#f4f4f6" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="daily logo quiz, logo guessing game, brand quiz, free quiz" />
+    <meta name="author" content="Jacob Parkes" />
     <meta name="description" content="Play Logodle, a free daily logo quiz. Identify ten mystery brand logos from eight choices, track your score, and revisit past challenges in the archive." />
     <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#f4f4f6" />
     <link rel="canonical" href="https://logodle-logo-guesser.vercel.app/" />
-    <title>Logodle | Free Daily Logo Quiz</title>
-    <link rel="icon" type="image/png" href="assets/Minimalist%20Geometric%20Lambda%20Logo.png?v=2" />
+    <link rel="icon" type="image/png" href="/assets/Minimalist%20Geometric%20Lambda%20Logo.png?v=2" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Logodle" />
-    <meta property="og:title" content="Logodle | Free Daily Logo Quiz" />
+    <meta property="og:title" content="Logodle | Daily Logo Quiz" />
     <meta property="og:description" content="Play Logodle, a free daily logo quiz. Identify ten mystery brand logos from eight choices, track your score, and revisit past challenges in the archive." />
     <meta property="og:url" content="https://logodle-logo-guesser.vercel.app/" />
     <meta property="og:image" content="https://logodle-logo-guesser.vercel.app/assets/Minimalist%20Geometric%20Lambda%20Logo.png" />
@@ -42,36 +40,10 @@
         }
       }
     </script>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="style-overrides.css" />
+    <title>Logodle | Free Daily Logo Quiz</title>
   </head>
   <body>
-    <canvas id="confetti" aria-hidden="true"></canvas>
-    <header><button id="archive-toggle" aria-label="Open archive" title="Archive"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16v12H4zM3 4h18v4H3zM9 12h6"/></svg></button><a class="brand" href="./"><img src="assets/Minimalist%20Geometric%20Lambda%20Logo.png" alt="" />LOGODLE</a></header>
-    <main>
-      <h1 class="visually-hidden">Logodle: the free daily logo quiz</h1>
-      <section id="game">
-        <nav class="day-nav"><button id="previous" aria-label="Previous day">‹</button><div><small>DAILY LOGO QUIZ</small><h2 id="day-title"></h2></div><button id="next" aria-label="Next day">›</button></nav>
-        <div class="progress"><span id="round-label"></span><i><b id="progress-fill"></b></i></div>
-        <section class="logo-stage" aria-label="Mystery logo"><img id="logo" alt="Mystery logo" /></section>
-        <p class="question">Which logo is this?</p>
-        <div id="choices" class="choices" role="group" aria-label="Answer choices. Use the arrow keys to move between answers and Enter to select."></div>
-        <p id="feedback" class="feedback" aria-live="polite"></p>
-        <div class="controls"><button id="give-up" class="muted">Back</button><button id="continue" disabled>Choose an answer</button></div>
-      </section>
-      <section class="about" aria-labelledby="about-title">
-        <h2 id="about-title">A free daily logo quiz</h2>
-        <p>Think you know the brands behind the logos? Play ten rounds of Logodle and identify each mystery logo from eight choices. Track your score, then browse the archive to replay past challenges.</p>
-        <h3>How to play</h3>
-        <ol>
-          <li>Study the mystery logo.</li>
-          <li>Choose the brand you think it belongs to.</li>
-          <li>Complete all ten rounds and see your score.</li>
-        </ol>
-      </section>
-      <section id="archive" hidden><div class="archive-head"><div><small>PAST &amp; UPCOMING</small><h2>Archive</h2></div><button id="back">Back</button></div><div id="archive-list"></div></section>
-    </main>
-    <dialog id="results"><button id="close-results" class="close" aria-label="Close">×</button><small>QUIZ COMPLETE</small><h2>Nice work!</h2><strong id="score"></strong><p id="message"></p><button id="open-archive" class="muted full">Browse archive</button></dialog>
-    <script src="app.js"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
