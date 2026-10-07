@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://logodle-logo-guesser.vercel.app/sitemap.xml

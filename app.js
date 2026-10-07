@@ -139,6 +139,38 @@
     $('continue').disabled=false;$('continue').textContent=round===active.rounds.length-1?'Show results':'Next round';
     timer=setTimeout(()=>{timer=null;round++;showRound()},2000);
   }
+  $('choices').addEventListener('keydown', event => {
+    const direction = {
+      ArrowUp: [0, -1],
+      ArrowRight: [1, 0],
+      ArrowDown: [0, 1],
+      ArrowLeft: [-1, 0]
+    }[event.key];
+    const current = event.target;
+    if (!direction || !(current instanceof HTMLButtonElement) || current.disabled) return;
+
+    const [dx, dy] = direction;
+    const currentBounds = current.getBoundingClientRect();
+    const currentX = currentBounds.left + currentBounds.width / 2;
+    const currentY = currentBounds.top + currentBounds.height / 2;
+    const candidates = [...$('choices').querySelectorAll('button:not(:disabled)')]
+      .filter(button => button !== current)
+      .map(button => {
+        const bounds = button.getBoundingClientRect();
+        const offsetX = bounds.left + bounds.width / 2 - currentX;
+        const offsetY = bounds.top + bounds.height / 2 - currentY;
+        const primary = offsetX * dx + offsetY * dy;
+        const cross = Math.abs(offsetX * dy - offsetY * dx);
+        return { button, primary, score: Math.abs(primary) + cross * 2 };
+      });
+    if (!candidates.length) return;
+
+    const forward = candidates.filter(candidate => candidate.primary > 0);
+    const pool = forward.length ? forward : candidates;
+    pool.sort((a, b) => a.score - b.score);
+    event.preventDefault();
+    pool[0].button.focus();
+  });
   function continueRound(){
     if (isCompletedDay()) {
       const position = catalogue.findIndex(item => item.date === active.date);
